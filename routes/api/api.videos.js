@@ -6,7 +6,11 @@ const videoController = require('../../controllers/videoController');
 const upload = multer({});
 const VideoService = videoController.VideoService;
 
+/**
+ *
+ */
 router.use((req, res, next)=>{
+
     res.set({
         // Allow any domain, allow REST methods we've implemented
         'Access-Control-Allow-Origin':'*',

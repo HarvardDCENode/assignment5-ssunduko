@@ -13,7 +13,7 @@
                testId = list[0]._id;
 
                let data = new FormData();
-               let reviews = { rating: '3', review: 'This is another review'};
+               let reviews = { rating: '5', review: 'This is yet another review'};
 
                data.append('title', 'My API Test Title');
                data.append('description','This is an AJAX API test');
@@ -35,7 +35,7 @@
                                console.log(video);
 
                                savedVideo.title = video.title;
-                               savedVideo.description="This is an update";
+                               savedVideo.description="This is more updates";
 
                                //update
                                callAPI('PUT','/api/videos/'+videoId, null, savedVideo)
