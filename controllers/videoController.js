@@ -1,12 +1,12 @@
 const Video = require('../models/videoModel');
 
 /**
- *
+ * This is a Video Service implementing Data Access Object Pattern CRUD operations
  */
 class VideoService {
 
     /**
-     *
+     * This is a Video create method
      * @param obj
      * @returns {Promise<Document<any, {}>>}
      */
@@ -16,7 +16,7 @@ class VideoService {
       }
 
     /**
-     *
+     * This is a Video update method by id
      * @param id
      * @param data
      * @returns {*}
@@ -31,7 +31,7 @@ class VideoService {
       }
 
     /**
-     *
+     * This is a Video read method by id
      * @param id
      * @returns {*}
      */
@@ -43,7 +43,7 @@ class VideoService {
       }
 
     /**
-     *
+     * This is a Video find method
      * @returns {*}
      */
       static list(){
@@ -54,7 +54,7 @@ class VideoService {
       }
 
     /**
-     *
+     * This is a delete Video method by id
      * @param id
      * @returns {*}
      */

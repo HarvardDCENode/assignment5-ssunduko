@@ -7,7 +7,7 @@ const upload = multer({});
 const VideoService = videoController.VideoService;
 
 /**
- *
+ * Method for CORS setup
  */
 router.use((req, res, next)=>{
 
@@ -25,10 +25,11 @@ router.use((req, res, next)=>{
 });
 
 /**
- * Read All Videos
+ * Method for exposing REST API for getting all Videos
  */
 router.get('/', (req, res, next)=>{
 
+    //Call Video Service to get all videos
     VideoService.list()
         .then((videos) => {
             console.log(`List of Videos: ${videos}`);
@@ -38,11 +39,12 @@ router.get('/', (req, res, next)=>{
 });
 
 /**
- * Read Video
+ * Method for exposing REST API for getting Video by Id
  */
 router.get('/:videoid', (req, res, next)=>{
 
     console.log(`looking for ${req.params.videoid}`);
+    //Call Video Service to get video by id
     VideoService.read(req.params.videoid)
         .then((video) => {
             console.log(`Found Video: ${video}`);
@@ -55,12 +57,14 @@ router.get('/:videoid', (req, res, next)=>{
 });
 
 /**
- * Update Video
+ * Method for exposing REST API for updating Video by Id
  */
 router.put('/:videoid', (req, res, next)=>{
 
     console.log(`updating ${req.params.videoid}`);
     let data = req.body;
+
+    //Call Video Service to update video by id
     VideoService.update(req.params.videoid, data)
         .then((updatedVideo)=>{
             console.log(`Updated Video: ${updatedVideo}`);
@@ -73,10 +77,11 @@ router.put('/:videoid', (req, res, next)=>{
  });
 
 /**
- * Create Video
+ * Method for exposing REST API for Video and Review creation
  */
 router.post('/', upload.none(), async (req, res, next)=>{
 
+    //Get Review data
     let reviews = JSON.parse(req.body.reviews, (key, value) => {
         if (typeof value === 'string') {
             return value;
@@ -84,7 +89,8 @@ router.post('/', upload.none(), async (req, res, next)=>{
         return value;
     });
 
-    const video  = {
+    //Get Video data
+    let video  = {
         title: req.body.title,
         description: req.body.description,
         averageRating: req.body.averageRating,
@@ -96,6 +102,7 @@ router.post('/', upload.none(), async (req, res, next)=>{
 
     console.log('creating ' + JSON.stringify(video));
     try{
+        //Call Video Service to create video
         const videoSave = await VideoService.create(video)
         console.log(`created ${videoSave.id}`);
         res.status(201);
@@ -107,10 +114,12 @@ router.post('/', upload.none(), async (req, res, next)=>{
 });
 
 /**
- * Delete Video
+ * Method for exposing REST API for deleting Video by Id
  */
 router.delete('/:videoid', (req, res, next)=>{
     let id = req.params.videoid;
+
+    //Call Video Service to delete video by id
     VideoService.delete(req.params.videoid)
         .then((video) => {
             console.log(`Deleted Video: ${id}`);

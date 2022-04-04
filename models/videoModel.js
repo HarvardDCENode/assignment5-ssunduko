@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 /**
- *
+ * This is Schema object representing Video Review
  * @type {module:mongoose.Schema<Document, Model<any, any>, undefined>}
  */
 const reviewSchema = new Schema({
@@ -13,7 +13,7 @@ const reviewSchema = new Schema({
 });
 
 /**
- *
+ * This is a Schema object representing Video data
  * @type {module:mongoose.Schema<Document, Model<any, any>, undefined>}
  */
 const schema = new Schema({
