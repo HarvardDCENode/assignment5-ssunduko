@@ -1,6 +1,6 @@
 (function(){
 
-   const baseURL = 'http://localhost:8080';
+   const baseURL = 'http://ec2-54-88-33-85.compute-1.amazonaws.com:8080';
 
     /**
      * This is a method for testing Video REST API
